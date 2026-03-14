@@ -26,7 +26,7 @@ import { Popper } from '../../../../lib.js';
 import { extensionSettings, saveSettingsDebounced } from '../../../extensions.js';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
-const MODULE_NAME = 'quickPersonaList';
+const MODULE_NAME = 'Quick-Persona-List';
 
 const supportsPersonaThumbnails = getThumbnailUrl('persona', 'test.png', true).includes('&t=');
 
