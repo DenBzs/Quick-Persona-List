@@ -1,0 +1,284 @@
+/* ═══════════════════════════════════════════════
+   Quick-Persona-List — style.css
+   ═══════════════════════════════════════════════ */
+
+/* ── 하단 바 버튼 ─────────────────────────────── */
+/* 크기는 ST 기본 버튼과 완전히 동일하게 유지     */
+
+#qplBtn {
+    position: relative;
+    width: var(--bottomFormBlockSize);
+    height: var(--bottomFormBlockSize);
+    order: 10;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* absolute로 버튼을 완전히 꽉 채움 */
+#qplBtnImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 채팅 고정 시 — 얇은 파란 테두리만 */
+#qplBtn.qpl-locked {
+    outline: 2px solid #74b9ff;
+    outline-offset: 1px;
+}
+
+/* 캐럿 (▲/▼) */
+#qplBtnCaret {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(var(--bottomFormBlockSize) / 3);
+    height: calc(var(--bottomFormBlockSize) / 3);
+    z-index: 10;
+    font-size: calc(var(--bottomFormBlockSize) / 3.5);
+    text-shadow: 0 0 4px rgba(0,0,0,0.7);
+    pointer-events: none;
+    color: #fff;
+}
+
+/* ── 팝업 패널 ────────────────────────────────── */
+
+#qplMenu {
+    z-index: 30000;
+    /* 연보라 고정 배경 */
+    background: #eeeaf6;
+    border: 1px solid #d0c8e8;
+    border-radius: 12px;
+    min-width: 270px;
+    max-width: 360px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #2a2535;
+}
+
+.qpl-header {
+    padding: 8px 12px 6px;
+    border-bottom: 1px solid #d0c8e8;
+    font-size: 0.78em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6a5f8a;
+    user-select: none;
+}
+
+.qpl-header i { margin-right: 6px; }
+
+/* ── 스크롤 목록 ──────────────────────────────── */
+
+.qpl-list {
+    overflow-y: auto;
+    max-height: 65vh;
+    max-height: 65svh;
+    padding: 4px 0;
+}
+
+.qpl-list::-webkit-scrollbar        { width: 4px; }
+.qpl-list::-webkit-scrollbar-track  { background: transparent; }
+.qpl-list::-webkit-scrollbar-thumb  {
+    background: #c4b8e0;
+    border-radius: 4px;
+}
+
+/* ── 즐겨찾기 없을 때 힌트 ────────────────────── */
+
+.qpl-hint {
+    padding: 6px 14px 8px;
+    font-size: 0.76em;
+    color: #8878aa;
+    user-select: none;
+    border-top: 1px solid #ddd6f0;
+}
+.qpl-hint i { color: #c0a030; margin-right: 4px; }
+
+/* ── 페르소나 행 ──────────────────────────────── */
+
+.qpl-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 5px 10px;
+    margin: 1px 4px;
+    border-radius: 8px;
+    cursor: default;
+    transition: background 0.12s;
+    position: relative;
+}
+
+.qpl-row:hover {
+    background: rgba(120, 100, 180, 0.1);
+}
+
+.qpl-row.qpl-active {
+    background: rgba(120, 100, 180, 0.12);
+}
+
+/* 현재 선택된 페르소나 — 왼쪽 보라 바 */
+.qpl-row.qpl-active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 2px;
+    background: #9b88cc;
+    border-radius: 2px;
+}
+
+/* ── 아바타 썸네일 ────────────────────────────── */
+
+.qpl-avatar-wrap {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+}
+
+.qpl-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #d0c8e8;
+    outline: 2px solid transparent;
+    transition: outline-color 0.15s;
+}
+
+.qpl-avatar.qpl-default { outline-color: #c0a030; }
+
+body.square-avatars .qpl-avatar      { border-radius: 4px; }
+body.big-avatars    .qpl-avatar      { width: 46px; height: 46px; }
+body.big-avatars    .qpl-avatar-wrap { width: 46px; height: 46px; }
+
+/* ── 이름 + 태그 (한 줄 가로 배치) ──────────────── */
+
+.qpl-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.qpl-name {
+    font-size: 0.88em;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    flex-shrink: 0;
+    max-width: 50%;
+    color: #2a2535;
+}
+
+.qpl-tag {
+    flex-shrink: 1;
+    min-width: 0;
+    font-size: 0.68em;
+    font-weight: 500;
+    background: rgba(120, 100, 180, 0.1);
+    border: 1px solid #c4b8e0;
+    border-radius: 8px;
+    padding: 1px 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.7;
+    color: #6a5f8a;
+}
+
+/* ── 📌 채팅방 고정 버튼 ──────────────────────── */
+
+.qpl-pin-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: #b0a0cc;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    line-height: 1;
+    opacity: 0;
+    transition: color 0.15s, background 0.15s, opacity 0.15s;
+}
+
+.qpl-row:hover .qpl-pin-btn,
+.qpl-pin-btn.active {
+    opacity: 1;
+}
+
+.qpl-pin-btn:hover {
+    background: rgba(120, 100, 180, 0.12);
+    color: #6a5f8a;
+}
+
+.qpl-pin-btn.active       { color: #4a90d9; }
+.qpl-pin-btn.active:hover  { color: #6c63ff; }
+
+/* ═══════════════════════════════════════════════
+   ⭐ 페르소나 패널 즐겨찾기 별 버튼
+   [이름][⭐][타이틀] 순서로 인라인 배치됨
+   ═══════════════════════════════════════════════ */
+
+.qpl-fav-star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.78em;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s, color 0.15s;
+    color: #bbb;
+    padding: 0;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* 즐겨찾기 활성화 — 항상 보임 */
+.qpl-fav-star.active {
+    opacity: 1;
+    color: #e0a800;
+}
+
+/* 부모 hover 시 표시 */
+.avatar-container[data-avatar-id]:hover .qpl-fav-star {
+    opacity: 0.6;
+}
+
+.qpl-fav-star:hover {
+    opacity: 1 !important;
+    color: #e0a800;
+}
