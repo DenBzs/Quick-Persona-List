@@ -3,7 +3,6 @@
    ═══════════════════════════════════════════════ */
 
 /* ── 하단 바 버튼 ─────────────────────────────── */
-
 #qplBtn {
     position: relative;
     width: var(--bottomFormBlockSize);
@@ -11,22 +10,28 @@
     order: 10;
     padding: 0 !important;
     box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 #qplBtnImg {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+
     border-radius: 50%;
     border: 1px solid transparent;
     box-shadow: 0 0 5px var(--black50a);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    cursor: pointer;
-    display: block;
-}
 
-body.square-avatars #qplBtnImg {
-    border-radius: 2px;
+    display: block !important;
+    flex-shrink: 0;
 }
 
 /* 채팅 고정 시 노란 테두리 */
