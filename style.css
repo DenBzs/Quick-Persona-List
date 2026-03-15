@@ -3,10 +3,13 @@
    ═══════════════════════════════════════════════ */
 
 /* ── 하단 바 버튼 ─────────────────────────────── */
+
 #qplBtn {
     position: relative;
     width: var(--bottomFormBlockSize);
     height: var(--bottomFormBlockSize);
+    min-width: var(--bottomFormBlockSize);
+    min-height: var(--bottomFormBlockSize);
     order: 10;
     padding: 0 !important;
     box-sizing: border-box;
@@ -32,6 +35,17 @@
 
     display: block !important;
     flex-shrink: 0;
+}
+
+body.square-avatars #qplBtnImg {
+    border-radius: 10px !important;
+}
+
+#qplBtn.qpl-locked #qplBtnImg {
+    border: 2px solid var(--golden);
+    box-shadow:
+        0 0 5px var(--black50a),
+        0 0 4px var(--golden);
 }
 
 /* 채팅 고정 시 노란 테두리 */
