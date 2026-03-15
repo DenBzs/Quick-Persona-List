@@ -115,7 +115,6 @@ function addQuickPersonaButton() {
     $container.append(`
     <div id="qplBtn" tabindex="0" title="페르소나 목록 열기">
         <img id="qplBtnImg" src="/img/ai4.png" alt="persona" />
-        <div id="qplBtnCaret" class="fa-fw fa-solid fa-caret-up"></div>
     </div>
 `);
 
