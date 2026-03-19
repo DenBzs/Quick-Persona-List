@@ -1,6 +1,6 @@
 /**
  * Quick-Persona-List
- * ⚠️ 원본 Extension-QuickPersona와 동시 사용 불가
+ * ⚠️ Extension-QuickPersona와 동시 사용 불가
  */
 
 import { animation_duration, eventSource, event_types, getThumbnailUrl } from '../../../../script.js';
@@ -8,7 +8,7 @@ import { power_user } from '../../../power-user.js';
 import { getUserAvatar, getUserAvatars, setUserAvatar, user_avatar } from '../../../personas.js';
 import { Popper } from '../../../../lib.js';
 
-const MODULE_NAME = 'Qtest';
+const MODULE_NAME = 'Quick-Persona-List';
 const supportsPersonaThumbnails = getThumbnailUrl('persona', 'test.png', true).includes('&t=');
 
 // ─── 테마 ──────────────────────────────────────────────────────────────────────
