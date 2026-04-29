@@ -1,7 +1,4 @@
-/**
- * Quick-Persona-List
- * ⚠️ Extension-QuickPersona와 동시 사용 불가
- */
+
 
 import { animation_duration, eventSource, event_types, getThumbnailUrl, getRequestHeaders } from '../../../../script.js';
 import { power_user } from '../../../power-user.js';
